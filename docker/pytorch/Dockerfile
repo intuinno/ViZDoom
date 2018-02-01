@@ -35,12 +35,11 @@ RUN apt-get install -y \
     zlib1g-dev
 
 # Python3
-RUN apt-get install -y python3-dev python3 python3-pip
-RUN pip3 install pip --upgrade
-
-RUN pip3 install http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl 
-RUN pip3 install torchvision
-RUN pip3 install opencv-python
+RUN apt-get install -y python-dev python python-pip
+RUN pip install pip --upgrade
+RUN pip install http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp27-cp27mu-linux_x86_64.whl 
+RUN pip install torchvision
+RUN pip install opencv-python
 
 # Enables X11 sharing and creates user home directory
 ENV USER_NAME vizdoom
@@ -60,13 +59,13 @@ RUN export uid=${HOST_UID} gid=${HOST_GID} && \
 
 
 RUN git clone https://github.com/mwydmuch/ViZDoom ${HOME_DIR}/vizdoom
-RUN pip3 install ${HOME_DIR}/vizdoom
+RUN pip install ${HOME_DIR}/vizdoom
 
 USER ${USER_NAME}
 WORKDIR ${HOME_DIR}
 
 
-#CMD cd vizdoom/examples/python; python3 learning_tensorflow.py
+#CMD cd vizdoom/examples/python; python learning_tensorflow.py
 
 RUN git clone https://github.com/intuinno/DeepRL-Grounding ${HOME_DIR}/ground
 
