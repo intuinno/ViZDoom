@@ -1,9 +1,9 @@
-FROM ubuntu:16.04 # CPU ONLY
+# FROM ubuntu:16.04 # CPU ONLY
 
 # GPU -> see: https://github.com/NVIDIA/nvidia-docker
 #FROM nvidia/cuda:7.5-cudnn5-devel 
 # or
-#FROM nvidia/cuda:8.0-cudnn5-devel 
+FROM nvidia/cuda:8.0-cudnn5-devel 
 
 # Install all dependencies
 RUN apt-get update && apt-get install -y \
